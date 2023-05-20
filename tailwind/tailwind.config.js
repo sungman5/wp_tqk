@@ -13,7 +13,20 @@ module.exports = {
 	],
 	theme: {
 		// Extend the default Tailwind theme.
-		extend: {},
+		extend: {
+			fontFamily: {
+				'abril': ['Abril fatface'],
+				'pretendard': ['Pretendard'],
+				'overpass': ['Overpass'],
+			},
+			colors : {
+				'line': '#cbd5e1',
+				'font': '#0f172a',
+			}
+		},
+		container : {
+			center : true,
+		}
 	},
 	corePlugins: {
 		// Disable Preflight base styles in builds targeting the editor.

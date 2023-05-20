@@ -80,8 +80,10 @@ if ( ! function_exists( 'thequeen_setup' ) ) :
 		// This theme uses wp_nav_menu() in two locations.
 		register_nav_menus(
 			array(
-				'menu-1' => __( 'Primary', 'thequeen' ),
-				'menu-2' => __( 'Footer Menu', 'thequeen' ),
+				'Primary-menu' => __( 'Primary-menu', 'thequeen' ),
+				'Footer-menu' => __( 'Footer Menu', 'thequeen' ),
+				'Top-right' => __( 'Top-right', 'thequeen' ),
+				'Top-left' => __( 'Top-left', 'thequeen' ),
 			)
 		);
 
@@ -145,13 +147,41 @@ add_action( 'widgets_init', 'thequeen_widgets_init' );
  */
 function thequeen_scripts() {
 	wp_enqueue_style( 'thequeen-style', get_stylesheet_uri(), array(), THEQUEEN_VERSION );
+
+	// 커스텀 스타일시트 추가
+	wp_enqueue_style('custom-style', get_template_directory_uri() .  '/main.css');
 	wp_enqueue_script( 'thequeen-script', get_template_directory_uri() . '/js/script.min.js', array(), THEQUEEN_VERSION, true );
+	
+	// 커스텀 스크립트 추가
+	wp_enqueue_script( 'thequeen-custom-scripts', get_template_directory_uri() . '/js/tqk_scripts.js', array(), THEQUEEN_VERSION, true );
+	wp_enqueue_script( 'thequeen-custom-gsap', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js', array(), THEQUEEN_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'thequeen_scripts' );
+
+
+
+
+/**
+ * 커스텀 폰트
+ */
+function enqueue_custom_fonts(){
+	if(!is_admin()){
+		wp_register_style('Abril Fatface', 'https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+		wp_enqueue_style('Abril Fatface');
+		
+		wp_register_style('Overpass', 'https://fonts.googleapis.com/css2?family=Overpass:wght@100;200;300;400;500;600;700;800;900&display=swap');
+		wp_enqueue_style('Overpass');
+		
+		wp_register_style('Pretendard', 'https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard-dynamic-subset.css');
+		wp_enqueue_style('Pretendard');
+	}
+}
+add_action('wp_enqueue_scripts', 'enqueue_custom_fonts');
+
 
 /**
  * Enqueue the block editor script.

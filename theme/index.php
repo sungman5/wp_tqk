@@ -34,6 +34,7 @@ get_header();
 				the_post();
 				get_template_part( 'template-parts/content/content' );
 			}
+			// get_template_part('woocommerce/archive-product');
 
 			// Previous/next page navigation.
 			thequeen_the_posts_navigation();

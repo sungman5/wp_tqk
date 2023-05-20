@@ -1,1 +1,20 @@
-
+#dropdown-menu {
+  background-color: white;
+}
+#dropdown-menu #primary-menu > li {
+  margin-bottom: 20px;
+}
+#dropdown-menu #primary-menu > li > a {
+  font-weight: 500;
+  margin-bottom: 12px;
+  display: block;
+}
+#dropdown-menu .sub-menu {
+  margin-bottom: 24px;
+}
+#dropdown-menu .sub-menu li {
+  margin-bottom: 8px;
+}
+#dropdown-menu .sub-menu li a {
+  font-weight: 300;
+}
