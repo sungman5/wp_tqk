@@ -235,3 +235,15 @@ require get_template_directory() . '/inc/template-tags.php';
  * Functions which enhance the theme by hooking into WordPress.
  */
 require get_template_directory() . '/inc/template-functions.php';
+
+
+/**
+ * 'course' 포스트 타입에 대한 쿼리를 반환하는 액션 훅
+ */
+function my_custom_get_course_query($query)
+{
+	if (!is_admin() && $query->is_main_query() && is_front_page()) {
+		$query->set('post_type', array('course'));
+	}
+}
+add_action('pre_get_posts', 'my_custom_get_course_query');

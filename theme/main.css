@@ -18,3 +18,31 @@
 #dropdown-menu .sub-menu li a {
   font-weight: 300;
 }
+
+#footer-menu-container #footer-menu > li {
+  margin-bottom: 20px;
+}
+#footer-menu-container #footer-menu > li > a {
+  font-weight: 500;
+  margin-bottom: 12px;
+  display: block;
+}
+#footer-menu-container .sub-menu {
+  margin-bottom: 24px;
+}
+#footer-menu-container .sub-menu li {
+  margin-bottom: 8px;
+}
+#footer-menu-container .sub-menu li a {
+  font-weight: 300;
+}
+
+@media (min-width: 1024px) {
+  #primary-menu > li {
+    margin-bottom: 20px;
+    flex-grow: 1;
+  }
+  .sub-menu li:hover {
+    text-decoration: underline;
+  }
+}

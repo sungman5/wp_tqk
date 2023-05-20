@@ -13,27 +13,30 @@
 <header id="masthead" class="fixed inset-x-0 top-0 z-50 bg-white border-b border-b-slate-300">
 	<!-- Top menu -->
 	<div id="top-menu" class="border-b border-b-line">
-		<div class="px-4 lg:px-0 max-w-[1080px] mx-auto flex justify-between py-3 ">
+		<div class="px-4 max-w-[1080px] mx-auto flex justify-between py-3 ">
 			<div class="flex gap-2 text-sm font-normal font-overpass">
 				<a href="">Facebook</a>
 				<a href="">Instagram</a>
 				<a href="">Blog</a>
 			</div>
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'Top-right',
-					'menu_id'        => 'Top-right',
-					'items_wrap'     => '<ul id="%1$s" class="%2$s font-pretendard font-normal text-sm flex gap-4" aria-label="submenu">%3$s</ul>',
-					'container'		 => false,
-					'depth'			 => 1,
-				)
-			);
-			?>
+			<div class="flex gap-4">
+				<?php
+				wp_nav_menu(
+					array(
+						'theme_location' => 'Top-right',
+						'menu_id'        => 'Top-right',
+						'items_wrap'     => '<ul id="%1$s" class="%2$s font-pretendard font-normal text-sm flex gap-4" aria-label="submenu">%3$s</ul>',
+						'container'		 => false,
+						'depth'			 => 1,
+					)
+				);
+				?>
+				<p class="text-sm">KOR</p>
+			</div>
 		</div>
 	</div>
 	<!-- Primary menu -->
-	<div id="mouse-enter-area" class="px-4 lg:px-0 max-w-[1080px] mx-auto flex items-center justify-between py-2 lg:py-8 lg:h-20 ">
+	<div id="mouse-enter-area" class="px-4 max-w-[1080px] mx-auto flex items-center justify-between py-2 lg:py-8 lg:h-20 ">
 		<!-- left-side -->
 		<nav class="gap-8 lg:flex">
 			<!-- 사이트 로고 -->
@@ -78,13 +81,13 @@
 	<!-- #site-navigation -->
 </header><!-- #masthead -->
 <!-- 드롭다운 메뉴 -->
-<div id="dropdown-menu" class="fixed inset-x-0 z-10 justify-center hidden max-h-screen pb-8 overflow-y-scroll lg:hidden pt-28 lg:pt-32">
+<div id="dropdown-menu" class="fixed inset-x-0 z-10 justify-center hidden max-h-screen pb-8 overflow-y-scroll shadow-md pt-28 lg:pt-32">
 	<?php
 	wp_nav_menu(
 		array(
 			'theme_location' => 'Primary-menu',
 			'menu_id'        => 'primary-menu',
-			'items_wrap'     => '<ul id="%1$s" class="%2$s px-4 lg:font-medium lg:flex lg:gap-8 lg:max-w-[1080px] lg:items-start" aria-label="submenu">%3$s</ul>',
+			'items_wrap'     => '<ul id="%1$s" class="%2$s px-4 lg:px-6 lg:pt-6 lg:font-medium lg:flex lg:gap-8 lg:w-[1080px] lg:items-start lg:h-fit" aria-label="submenu">%3$s</ul>',
 			'container'		 => false,
 			'depth'			 => 2,
 		)
