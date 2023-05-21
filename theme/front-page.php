@@ -49,12 +49,12 @@
                                 $sale_price = $product_obj->get_sale_price();
 
                                 if ($sale_price !== '') { // 할인 중인 경우
-                                    echo '<p class="font-semibold font-pretendard text-slate-900">' . wc_price($sale_price) . '</p>';
+                                    echo '<p class="font-semibold text-[18px] font-pretendard text-slate-900">' . wc_price($sale_price) . '</p>';
                                     echo '<p class="text-sm line-through font-pretendard text-slate-500">' . wc_price($regular_price) . '</p>';
-                                    echo '<p class="absolute top-0 left-0 px-2 py-1 font-bold text-white bg-gradient-to-r from-pink-500 to-red-500">할인중</p>';
+                                    echo '<p class="absolute top-0 left-0 px-3 py-1 font-bold text-white bg-gradient-to-r from-pink-500 to-red-500">할인중</p>';
                                 } elseif ($regular_price > 0) { // 할인 전 가격 표시
                                     // echo wc_price($regular_price);
-                                    echo '<p class="font-semibold font-pretendard text-slate-900">' . wc_price($regular_price) . '</p>';
+                                    echo '<p class="font-semibold text-[18px] font-pretendard text-slate-900">' . wc_price($regular_price) . '</p>';
                                 } else {
                                     echo '<p class="inline-block px-2 py-0.5 text-sm text-white bg-black">무료</p>'; // 가격이 0인 경우, 무료로 표시합니다.
                                 }
@@ -84,7 +84,7 @@
         <!-- 섹션 타이틀 -->
         <h2 class="flex items-center justify-center mb-12 text-xl font-semibold text-center md:text-2xl font-pretendard">
             <a href="">
-                진열된 상품 보기
+                모든 상품 보기
             </a>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
@@ -124,14 +124,14 @@
                         $regular = get_post_meta(get_the_ID(), '_regular_price', true);
                         $currency_symbol = get_woocommerce_currency_symbol();
                         if ($sale) {
-                            echo '<p class="font-semibold font-pretendard text-slate-900">' . number_format($sale) . $currency_symbol . '</p>';
+                            echo '<p class="font-semibold text-[18px] font-pretendard text-slate-900">' . number_format($sale) . $currency_symbol . '</p>';
                             echo '<p class="text-sm line-through font-pretendard text-slate-500">' . number_format($regular) . $currency_symbol . '</p>';
-                            echo '<p class="absolute top-0 left-0 px-2 py-1 font-bold text-white bg-gradient-to-r from-pink-500 to-red-500">할인중</p>';
+                            echo '<p class="absolute top-0 left-0 px-3 py-1 font-bold text-white bg-gradient-to-r from-pink-500 to-red-500">할인중</p>';
                         } elseif ($regular) {
-                            echo '<p class="font-semibold font-pretendard text-slate-900">' . number_format($regular) . $currency_symbol . '</p>';
+                            echo '<p class="font-semibold text-[18px] font-pretendard text-slate-900">' . number_format($regular) . $currency_symbol . '</p>';
                         }
                         if (!$product->is_in_stock()) {
-                            echo '<p class="inline-block px-2 py-0.5 text-[12px] font-semibold text-white bg-gradient-to-r from-slate-800 to-black">Sold Out</p>';
+                            echo '<p class="inline-block px-2 py-0.5 text-[12px] font-semibold text-white bg-gradient-to-r from-slate-800 to-black">품절</p>';
                         }
                         ?>
 

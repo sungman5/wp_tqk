@@ -26,6 +26,7 @@ do_action( 'sensei_loop_course_before' );
 
 <ul class="course-container columns-<?php sensei_courses_per_row(); ?>" >
 
+
 	<?php
 	/**
 	 * This runs before the post type items in the loop.php template. It

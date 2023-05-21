@@ -10,7 +10,7 @@
 
 ?>
 
-<header id="masthead" class="fixed inset-x-0 top-0 z-50 bg-white border-b border-b-slate-300">
+<header id="masthead" class="fixed inset-x-0 top-0 z-[999] bg-white border-b border-b-slate-300">
 	<!-- Top menu -->
 	<div id="top-menu" class="border-b border-b-line">
 		<div class="px-4 max-w-[1080px] mx-auto flex justify-between py-3 ">
@@ -40,7 +40,7 @@
 		<!-- left-side -->
 		<nav class="gap-8 lg:flex">
 			<!-- 사이트 로고 -->
-			<div id="site-logo" class="text-2xl font-bold tracking-tighter uppercase lg:flex font-overpass">
+			<div id="site-logo" class="text-2xl font-bold tracking-tighter text-black uppercase lg:flex font-overpass">
 				<?php
 				if (is_front_page()) :
 				?>
@@ -81,7 +81,7 @@
 	<!-- #site-navigation -->
 </header><!-- #masthead -->
 <!-- 드롭다운 메뉴 -->
-<div id="dropdown-menu" class="fixed inset-x-0 z-10 justify-center hidden max-h-screen pb-8 overflow-y-scroll shadow-md pt-28 lg:pt-32">
+<div id="dropdown-menu" class="fixed inset-x-0 z-[998] justify-center hidden max-h-screen pb-8 overflow-y-scroll shadow-md pt-28 lg:pt-32">
 	<?php
 	wp_nav_menu(
 		array(

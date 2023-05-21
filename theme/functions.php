@@ -247,3 +247,52 @@ function my_custom_get_course_query($query)
 	}
 }
 add_action('pre_get_posts', 'my_custom_get_course_query');
+
+/**
+ * 우커머스 지원 선언
+ */
+function mytheme_add_woocommerce_support()
+{
+	add_theme_support('woocommerce');
+}
+add_action('after_setup_theme', 'mytheme_add_woocommerce_support');
+
+
+/**
+ * 수량 선택 창에 classes 추가--simple
+ */
+// function custom_quantity_input_args($args, $product)
+// {
+	// 	$args['input_value'] = 1;
+	// 	$args['min_value'] = apply_filters('woocommerce_quantity_input_min', $product->get_min_purchase_quantity(), $product);
+	// 	$args['max_value'] = apply_filters('woocommerce_quantity_input_max', $product->get_max_purchase_quantity(), $product);
+	// 	$args['classes'] = array('w-full', 'p-4', 'text-xl', 'border', 'border-slate-300', 'rounded');  // your class here
+	
+	// 	return $args;
+	// }
+	// add_filter('woocommerce_quantity_input_args', 'custom_quantity_input_args', 10, 2);
+
+// /**
+//  * 수량 선택 창에 classes 추가 -- variation
+//  */
+// function custom_variation_quantity_input_args($args, $product, $variation)
+// {
+// 	$args['min_qty'] = 1;
+// 	$args['max_qty'] = $variation->get_max_purchase_quantity();
+// 	$args['input_value'] = $variation->get_min_purchase_quantity();
+// 	$args['class'] = array('w-full', 'p-4', 'text-xl', 'border', 'border-slate-300', 'rounded'); // your class here
+	
+// 	return $args;
+// }
+
+// add_filter('woocommerce_available_variation', 'custom_variation_quantity_input_args', 10, 3);
+
+
+/**
+ * 장바구니 담기 후 장바구니로 리다이렉트
+ */
+// function custom_add_to_cart_redirect()
+// {
+// 	return wc_get_cart_url();
+// }
+// add_filter('woocommerce_add_to_cart_redirect', 'custom_add_to_cart_redirect');

@@ -23,3 +23,16 @@ dropdownMenu.addEventListener('mouseleave', function () {
         dropdownMenu.style.display = 'none';
     }
 });
+
+// 리뷰창 textarea 라인 높이
+var textarea = document.getElementById('comment');
+var minRows = 4; // 최소 줄 수를 설정하고 이 값에 따라 최소 높이를 설정하세요.
+var lineHeight = 19; // 텍스트 라인의 높이를 확인하고 이 값을 설정하세요.
+
+textarea.addEventListener('input', function () {
+    this.style.height = 'auto';
+
+    // 최소 높이를 설정하고, 입력된 텍스트 줄 수가 최소 높이를 초과하면 그에 따라 높이를 조정합니다.
+    this.style.height = (this.scrollHeight > minRows * lineHeight ? this.scrollHeight : minRows * lineHeight) + 'px';
+});
+
