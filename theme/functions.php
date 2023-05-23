@@ -82,7 +82,8 @@ if ( ! function_exists( 'thequeen_setup' ) ) :
 			array(
 				'Primary-menu' => __( 'Primary-menu', 'thequeen' ),
 				'Footer-menu' => __( 'Footer Menu', 'thequeen' ),
-				'Top-right' => __( 'Top-right', 'thequeen' ),
+				'not-logged' => __('not-logged', 'thequeen' ),
+				'logged' => __('logged', 'thequeen' ),
 				'Top-left' => __( 'Top-left', 'thequeen' ),
 			)
 		);
@@ -257,42 +258,54 @@ function mytheme_add_woocommerce_support()
 }
 add_action('after_setup_theme', 'mytheme_add_woocommerce_support');
 
-
 /**
- * 수량 선택 창에 classes 추가--simple
+ * sensei 지원 선언
  */
-// function custom_quantity_input_args($args, $product)
-// {
-	// 	$args['input_value'] = 1;
-	// 	$args['min_value'] = apply_filters('woocommerce_quantity_input_min', $product->get_min_purchase_quantity(), $product);
-	// 	$args['max_value'] = apply_filters('woocommerce_quantity_input_max', $product->get_max_purchase_quantity(), $product);
-	// 	$args['classes'] = array('w-full', 'p-4', 'text-xl', 'border', 'border-slate-300', 'rounded');  // your class here
-	
-	// 	return $args;
-	// }
-	// add_filter('woocommerce_quantity_input_args', 'custom_quantity_input_args', 10, 2);
-
-// /**
-//  * 수량 선택 창에 classes 추가 -- variation
-//  */
-// function custom_variation_quantity_input_args($args, $product, $variation)
-// {
-// 	$args['min_qty'] = 1;
-// 	$args['max_qty'] = $variation->get_max_purchase_quantity();
-// 	$args['input_value'] = $variation->get_min_purchase_quantity();
-// 	$args['class'] = array('w-full', 'p-4', 'text-xl', 'border', 'border-slate-300', 'rounded'); // your class here
-	
-// 	return $args;
-// }
-
-// add_filter('woocommerce_available_variation', 'custom_variation_quantity_input_args', 10, 3);
+function declare_sensei_support() {
+	add_theme_support( 'sensei' );
+}
+add_action( 'after_setup_theme', 'declare_sensei_support' );
 
 
 /**
- * 장바구니 담기 후 장바구니로 리다이렉트
+ * 강의상품 중복 장바구니 담아도 수량 1개 유지
  */
-// function custom_add_to_cart_redirect()
-// {
-// 	return wc_get_cart_url();
-// }
-// add_filter('woocommerce_add_to_cart_redirect', 'custom_add_to_cart_redirect');
+function limit_product_quantity_in_cart($passed, $product_id)
+{
+	$limited_categories = array('category-slug-1', 'category-slug-2'); // 제한하고 싶은 카테고리의 슬러그를 여기에 입력하세요.
+	
+	if (has_term($limited_categories, 'product_cat', $product_id)) {
+		foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
+			$cart_product_id = $cart_item['product_id'];
+			
+			// If the product is already in the cart, block addition and ensure quantity is 1
+			if ($cart_product_id === $product_id) {
+				WC()->cart->set_quantity($cart_item_key, 1);
+				wc_add_notice(__('The product is already in the cart, quantity has been reset to 1.', 'domain'), 'notice');
+				return false;
+			}
+		}
+	}
+	
+	return $passed;
+}
+add_filter('woocommerce_add_to_cart_validation', 'limit_product_quantity_in_cart', 10, 2);
+
+/**
+ * 수강계속하기 버튼 함수
+ */
+function get_first_active_lesson($course_id, $user_id)
+{
+	$lessons_completed = Sensei()->course->course_lessons_completed($course_id, $user_id);
+	$course_lessons = Sensei()->course->course_lessons($course_id);
+
+	$first_active_lesson = false;
+	foreach ($course_lessons as $lesson) {
+		if (!in_array($lesson->ID, $lessons_completed)) {
+			$first_active_lesson = $lesson->ID;
+			break;
+		}
+	}
+
+	return $first_active_lesson;
+}

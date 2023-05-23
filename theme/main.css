@@ -89,6 +89,58 @@
   max-width: 100%;
 }
 
+.course-meta .sensei-message {
+  display: none;
+}
+.course-meta > .single_add_to_cart_button {
+  background-color: #3b82f6;
+}
+
+#content > div > div.relative.pb-10.mb-12.border-b.border-b-line.md\:flex.md\:gap-10 > div.max-w-\[508px\] > section > form > button {
+  background-color: #3b82f6;
+  padding: 16px;
+  width: 100%;
+}
+
+#login-form .lost_password {
+  margin: auto;
+}
+#login-form .lost_password a {
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  display: block;
+}
+
+.woocommerce-privacy-policy-text > * {
+  font-size: 14px;
+}
+
+#custom-my-cart > table {
+  border: none;
+}
+
+.prose :where(tbody tr):not(:where([class~=not-prose] *)) {
+  border-bottom-width: 0;
+}
+
+#post-29 > div > div > div > div.cart-collaterals > div > table {
+  border-right-width: 0;
+  border-left-width: 0;
+  border-radius: 0;
+}
+
+#post-29 > div > div > div > div.cart-collaterals > div > div > a {
+  background-color: black;
+  border-radius: 0;
+}
+
+.post-navigation .nav-links {
+  display: flex;
+  height: fit-content;
+  justify-content: space-between;
+}
+
 @media (min-width: 1024px) {
   #primary-menu > li {
     margin-bottom: 20px;

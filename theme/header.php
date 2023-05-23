@@ -26,9 +26,9 @@
 
 	<?php wp_body_open(); ?>
 
-	<div id="page">
+	<div id="page" class="font-pretendard">
 		<a href="#content" class="sr-only"><?php esc_html_e('Skip to content', 'thequeen'); ?></a>
 
 		<?php get_template_part('template-parts/layout/header', 'content'); ?>
 
-		<div id="content" class="pt-28 lg:pt-32">
+		<div id="content" class="pt-28 lg:pt-[126px]">

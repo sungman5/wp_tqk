@@ -24,8 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 do_action( 'sensei_loop_course_before' );
 ?>
 
-<ul class="course-container columns-<?php sensei_courses_per_row(); ?>" >
-
+<ul class="course-container columns-<?php sensei_courses_per_row(); ?> max-w-[1080px] mx-auto grid grid-cols-1 md:grid-cols-2 px-4 lg:grid-cols-4 gap-4" >
 
 	<?php
 	/**

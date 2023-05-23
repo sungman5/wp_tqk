@@ -11,7 +11,7 @@
 ?>
 
 <footer id="colophon" class="py-6 md:py-16 bg-slate-50">
-	<div id="footer-menu-container" class="max-w-[1080px] px-4 lg:px-0 mx-auto">
+	<div id="footer-menu-container" class="max-w-[1080px] px-4 mx-auto">
 		<?php
 		wp_nav_menu(
 			array(

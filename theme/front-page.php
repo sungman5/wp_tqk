@@ -1,5 +1,13 @@
 <?php get_header(); ?>
 
+<section>
+    <?php
+    $page_id = 2;
+    $page = get_post($page_id);
+    // echo '<h2>' . $page->post_title . '</h2>';
+    echo '<p>' . apply_filters('the_content', $page->post_content) . '</p>';
+    ?>
+</section>
 <section id="front-course-archive" class="py-8 md:py-16">
     <div id="course-container" class="px-4 lg:w-[1080px] lg:mx-auto">
         <!-- 섹션 타이틀 -->

@@ -15,11 +15,11 @@
 	<div id="top-menu" class="border-b border-b-line">
 		<div class="px-4 max-w-[1080px] mx-auto flex justify-between py-3 ">
 			<div class="flex gap-2 text-sm font-normal font-overpass">
-				<a href="">Facebook</a>
-				<a href="">Instagram</a>
-				<a href="">Blog</a>
+				<!-- <a href="">Facebook</a> -->
+				<a href="https://www.instagram.com/the.queen.korea/" target="_blank">Instagram</a>
+				<a href="https://blog.naver.com/yogiyogo" target="_blank">Blog</a>
 			</div>
-			<div class="flex gap-4">
+			<!-- <div class="flex gap-4">
 				<?php
 				wp_nav_menu(
 					array(
@@ -32,7 +32,24 @@
 				);
 				?>
 				<p class="text-sm">KOR</p>
-			</div>
+			</div> -->
+			<?php
+			if (is_user_logged_in()) {
+				// 로그인한 사용자용 메뉴 출력
+				wp_nav_menu(array(
+					'theme_location' => 'logged', // 로그인한 사용자용 메뉴 위치
+					'container' => false,
+					'items_wrap'           => '<ul id="%1$s" class="flex gap-4 text-sm font-normal font-pretendard">%3$s</ul>',
+				));
+			} else {
+				// 비로그인 사용자용 메뉴 출력
+				wp_nav_menu(array(
+					'theme_location'	=> 'not-logged', // 비로그인 사용자용 메뉴 위치
+					'container' 	 	=> false,
+					'items_wrap'        => '<ul id="%1$s" class="flex gap-4 text-sm font-normal font-pretendard">%3$s</ul>',
+				));
+			}
+			?>
 		</div>
 	</div>
 	<!-- Primary menu -->

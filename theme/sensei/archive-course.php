@@ -13,7 +13,7 @@
 
 <?php get_sensei_header(); ?>
 
-	<div class="sensei-archive-controls">
+	<div class=" max-w-[1080px] mx-auto px-4 mb-6 text-2xl font-semibold sensei-archive-controls">
 		<?php
 
 			/**
@@ -26,20 +26,20 @@
 			 * @hooked Sensei_Course::course_archive_filters 20
 			 * @hooked Sensei_Templates::deprecated_archive_hook 80
 			 */
-			do_action( 'sensei_archive_before_course_loop' );
+			// do_action( 'sensei_archive_before_course_loop' );
 
 		?>
+		<h2>더퀸코리아가 준비한 특별한 강의</h2>
 	</div>
 
 	<?php
 
 	if ( Sensei()->course->course_archive_page_has_query_block() ) {
-
-		Sensei()->course->archive_page_content();
+		sensei_load_template( 'loop-course.php' );
 
 	} elseif ( have_posts() ) {
-
-		sensei_load_template( 'loop-course.php' );
+		
+		Sensei()->course->archive_page_content();		
 
 	} else {
 		?>
